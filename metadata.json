@@ -1,0 +1,6 @@
+{
+  "name": "Occitanie Travel",
+  "description": "Travel Group Discovery & Excursion App for Toulouse and Occitanie.",
+  "requestFramePermissions": [],
+  "majorCapabilities": ["MAJOR_CAPABILITY_SERVER_SIDE_GEMINI_API"]
+}
