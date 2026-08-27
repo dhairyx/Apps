@@ -39,6 +39,8 @@ import com.google.android.gms.maps.model.LatLng
 import com.google.maps.android.compose.GoogleMap
 import com.google.maps.android.compose.MapProperties
 import com.google.maps.android.compose.MapUiSettings
+import com.google.maps.android.compose.Marker
+import com.google.maps.android.compose.MarkerState
 import com.google.maps.android.compose.rememberCameraPositionState
 
 @OptIn(ExperimentalMaterial3Api::class)
@@ -339,13 +341,13 @@ fun MapSection() {
 fun MapContent(isMyLocationEnabled: Boolean) {
     val toulouse = LatLng(43.6047, 1.4442)
     val cameraPositionState = rememberCameraPositionState {
-        position = CameraPosition.fromLatLngZoom(toulouse, 10f)
+        position = CameraPosition.fromLatLngZoom(toulouse, 8f)
     }
 
     Box(
         modifier = Modifier
             .fillMaxWidth()
-            .height(200.dp)
+            .height(300.dp)
             .clip(RoundedCornerShape(16.dp))
     ) {
         GoogleMap(
@@ -353,6 +355,14 @@ fun MapContent(isMyLocationEnabled: Boolean) {
             cameraPositionState = cameraPositionState,
             properties = MapProperties(isMyLocationEnabled = isMyLocationEnabled),
             uiSettings = MapUiSettings(zoomControlsEnabled = false, myLocationButtonEnabled = true)
-        )
+        ) {
+            com.example.data.occitanieTouristSpots.forEach { spot ->
+                Marker(
+                    state = MarkerState(position = spot.location),
+                    title = spot.title,
+                    snippet = spot.description
+                )
+            }
+        }
     }
 }
