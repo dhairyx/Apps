@@ -2,6 +2,7 @@ package com.example.data
 
 import androidx.room.Entity
 import androidx.room.ForeignKey
+import androidx.room.Index
 import androidx.room.PrimaryKey
 
 @Entity(
@@ -13,7 +14,8 @@ import androidx.room.PrimaryKey
             childColumns = ["organizerId"],
             onDelete = ForeignKey.CASCADE
         )
-    ]
+    ],
+    indices = [Index(value = ["organizerId"])]
 )
 data class EventEntity(
     @PrimaryKey(autoGenerate = true) val id: Int = 0,

@@ -9,6 +9,12 @@ data class TravelPoint(
     val location: LatLng
 )
 
+data class Itinerary(
+    val id: String,
+    val name: String,
+    val points: List<TravelPoint>
+)
+
 val occitanieTouristSpots = listOf(
     TravelPoint("1", "Cité de Carcassonne", "Medieval fortress with 3km of walls and 52 towers.", LatLng(43.2063, 2.3636)),
     TravelPoint("2", "Albi Cathedral", "The largest brick building in the world.", LatLng(43.9285, 2.1426)),
